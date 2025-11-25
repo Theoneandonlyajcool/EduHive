@@ -60,7 +60,7 @@ function SignUpPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left Section - Welcome Card */}
-            <div className="flex items-center justify-center lg:sticky lg:top-8">
+            <div className="hidden md:flex items-center justify-center lg:sticky lg:top-8">
               <div className="bg-transparent rounded-lg  p-8 md:p-12 max-w-md w-full ">
                 <div className="space-y-6">
                   {/* Illustration */}

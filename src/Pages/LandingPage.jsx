@@ -1,6 +1,10 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoTriangleSharp } from "react-icons/io5";
+import { LiaClipboardListSolid } from "react-icons/lia";
+import { HiOutlineDocumentText } from "react-icons/hi";
+import { LuFileChartColumnIncreasing } from "react-icons/lu";
 
 function LandingPage({ onSignUpClick }) {
   const nav = useNavigate();
@@ -16,8 +20,8 @@ function LandingPage({ onSignUpClick }) {
           </h1>
 
           {/* Desktop Navigation */}
-          <div className=" w-[40%] flex justify-center items-center py-2 rounded-full bg-white">
-            <nav className="hidden md:flex items-center justify-around w-full">
+          <div className="hidden md:flex w-[40%]  justify-center items-center py-2 rounded-full bg-white">
+            <nav className=" items-center flex justify-around w-full">
               <a
                 href="#"
                 className="text-gray-700 hover:text-red-800 font-medium transition"
@@ -102,7 +106,7 @@ function LandingPage({ onSignUpClick }) {
                 Sign In
               </button>
               <button
-                onClick={onSignUpClick}
+                onClick={() => nav("/sign_up")}
                 className="w-full px-6 py-2 bg-red-900 text-white rounded font-bold hover:bg-red-800 transition"
               >
                 Sign Up
@@ -113,8 +117,8 @@ function LandingPage({ onSignUpClick }) {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-orange-50 py-8 md:py-16 lg:py-20 border-2 border-green-600">
-        <div className="max-w-7xl mx-auto px-4 border-2 border-red-500 h-full">
+      <section className="bg-orange-50 py-8 md:py-16 lg:py-20 ">
+        <div className="max-w-7xl mx-auto px-4  h-full">
           <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6">
@@ -139,7 +143,7 @@ function LandingPage({ onSignUpClick }) {
             </div>
 
             {/* Right Image Placeholder */}
-            <div className="flex justify-center md:justify-end border-2 border-blue-700 h-full">
+            <div className="hidden md:flex justify-center md:justify-end h-full">
               <img
                 src="https://res.cloudinary.com/dp75oveuw/image/upload/v1763996084/35d2eed3d71cad8b6ebc671a71eeeee0b65ffc99_ajctq9.png"
                 alt=""
@@ -151,7 +155,7 @@ function LandingPage({ onSignUpClick }) {
 
       {/* Welcome Section */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col justify-center items-center">
           <div className="text-center mb-12">
             <h3 className=" font-bold mb-2 text-4xl">
               WELCOME TO <span className="text-red-900">EDUHIVE</span>
@@ -169,40 +173,28 @@ function LandingPage({ onSignUpClick }) {
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="flex justify-center md:justify-around items-center flex-wrap w-full max-w-[80%]">
             {[
               {
-                icon: "📚",
-                title: "Student Management",
-                desc: "Manage student records and information",
+                text: "Choose a plan",
               },
               {
-                icon: "✅",
-                title: "Attendance",
-                desc: "Track attendance efficiently",
+                text: "Book Consulatation",
               },
               {
-                icon: "📊",
-                title: "Grades",
-                desc: "Manage grades and assessments",
+                text: "Start Free Trial",
               },
               {
-                icon: "💬",
-                title: "Communication",
-                desc: "Connect with parents and staff",
+                text: "Talk to us",
               },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="bg-orange-50 rounded-lg p-6 text-center hover:shadow-lg transition"
-              >
-                <div className="text-4xl mb-3 flex justify-center">
-                  {feature.icon}
+            ].map((ele, idx) => (
+              <div className=" flex flex-col my-2 mx-2 items-center cursor-pointer ">
+                <div className="bg-red-900 w-[10rem] my-2 h-[10rem] rounded-full flex justify-center items-center hover:shadow-xl hover:translate-y-1 transition-all ease-in-out duration-300">
+                  <p>
+                    <IoTriangleSharp className="text-white text-5xl" />
+                  </p>
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">
-                  {feature.title}
-                </h4>
-                <p className="text-gray-600 text-sm">{feature.desc}</p>
+                <p className="text-xl mt-2">{ele.text}</p>
               </div>
             ))}
           </div>
@@ -210,7 +202,7 @@ function LandingPage({ onSignUpClick }) {
       </section>
 
       {/* Automated Records Section */}
-      <section className="py-12 md:py-20 bg-white">
+      <section className="py-12 md:py-20 bg-[#FFF9F0]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -226,113 +218,47 @@ function LandingPage({ onSignUpClick }) {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                title: "Automated Attendance",
-                items: [
-                  "Real-time tracking",
-                  "Automated reports",
-                  "Parent notifications",
-                ],
+                icon: LiaClipboardListSolid,
+                content:
+                  "EduHive’s smart attendance feature makes attendance simple and automatic. With a few clicks, teachers can record attendance from any device, and the system instantly syncs data across all dashboards. Real-time analytics help administrators monitor trends, spot absences, and make informed decisions with ease.",
+                BtnText: "AUTOMATED ATTENDANCE",
               },
               {
-                title: "Secured Records",
-                items: ["Data encryption", "Access control", "Audit trails"],
+                icon: HiOutlineDocumentText,
+                content:
+                  "EduHive makes fee management effortless. Schools can generate invoices automatically, track payments in real time, and send instant reminders to parents. From invoicing to receipts, everything happens in one place. Every transaction is recorded securely, reducing errors and saving hours of manual work for administrators.",
+                BtnText: "FEES PAYMENT",
               },
               {
-                title: "Easy Integration",
-                items: ["Simple setup", "API access", "Third-party support"],
+                icon: LuFileChartColumnIncreasing,
+                content:
+                  "With EduHive, managing academic data is completely automated. Attendance, scores, and transcripts are synced across subjects and classes. Schools can generate detailed academic reports with a single click, giving teachers, students, and parents a clear view of progress throughout the term.",
+                BtnText: "ACADEMIC RECORDS",
               },
-            ].map((card, i) => (
+            ].map((ele, idx) => (
               <div
-                key={i}
-                className="bg-red-900 text-white rounded-lg p-6 hover:shadow-lg transition"
+                key={idx}
+                className="bg-[#F5E2C8] text-black flex flex-col justify-between items-center hover:shadow-xl hover:translate-y-2 cursor-pointer transition-all "
               >
-                <h3 className="font-bold text-xl mb-4 flex items-center">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white text-red-900 font-bold mr-3">
-                    ✓
-                  </span>
-                  {card.title}
-                </h3>
-                <ul className="space-y-2 text-orange-100">
-                  {card.items.map((item, j) => (
-                    <li key={j} className="flex items-center space-x-2">
-                      <span className="w-2 h-2 bg-orange-300 rounded-full"></span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className=" w-full max-w-[95%] p-6">
+                  {/* Icon */}
+                  <div className="border-2 border-black w-[4rem] h-[4rem] rounded-full flex justify-center items-center ">
+                    <ele.icon className="text-black text-3xl" />
+                  </div>
+                  <p className="mt-3">{ele.content}</p>
+                </div>
+                <button className="bg-red-900 h-[3rem] w-full text-white font-bold">
+                  {ele.BtnText}
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* py-12 md:py-20 */}
       {/* Why EduHive Section */}
-      <section className="py-12 md:py-20 bg-red-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Image */}
-            <div className="flex justify-center md:justify-start">
-              <div className="w-64 h-80 md:w-72 md:h-96 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl shadow-lg flex items-center justify-center overflow-hidden border-4 border-yellow-300">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">👨‍💼</div>
-                  <p className="text-white font-semibold">Professional Image</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content */}
-            <div className="text-white space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                Why EduHive?
-              </h2>
-
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-8 w-8 rounded-md bg-white text-red-900 font-bold">
-                      ✓
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Easy to Use Interface</h3>
-                    <p className="text-orange-100">
-                      Intuitive design that requires minimal training
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-8 w-8 rounded-md bg-white text-red-900 font-bold">
-                      ✓
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Complete Transparency</h3>
-                    <p className="text-orange-100">
-                      Real-time visibility into school operations
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-8 w-8 rounded-md bg-white text-red-900 font-bold">
-                      ✓
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg">Robust Security</h3>
-                    <p className="text-orange-100">
-                      Enterprise-grade security for your data
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="bg-red-900 w-full h-[110vh] min-h-fit md:h-[100vh]"></section>
 
       {/* Video Section */}
       <section className="py-12 md:py-20 bg-gray-800">
